@@ -18,6 +18,11 @@ from flask_cors import CORS
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, ".."))
 
+if PROJECT_DIR not in sys.path:
+    sys.path.insert(0, PROJECT_DIR)
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 # Resolve models directory with fallback support
 MODELS_DIR = os.path.join(PROJECT_DIR, "models")
 if not os.path.exists(MODELS_DIR):
