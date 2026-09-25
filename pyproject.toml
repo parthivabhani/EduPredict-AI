@@ -1,0 +1,9 @@
+[project]
+name = "edupredict-ai"
+version = "1.0.0"
+description = "EduPredict AI: Student Performance Prediction Web Application"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.vercel]
+entrypoint = "web_app.server:app"

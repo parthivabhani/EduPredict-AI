@@ -17,8 +17,22 @@ from flask_cors import CORS
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.abspath(os.path.join(BASE_DIR, ".."))
+
+# Resolve models directory with fallback support
 MODELS_DIR = os.path.join(PROJECT_DIR, "models")
+if not os.path.exists(MODELS_DIR):
+    if os.path.exists(os.path.join(os.getcwd(), "models")):
+        MODELS_DIR = os.path.join(os.getcwd(), "models")
+    elif os.path.exists(os.path.join(BASE_DIR, "models")):
+        MODELS_DIR = os.path.join(BASE_DIR, "models")
+
+# Resolve data directory with fallback support
 DATA_DIR = os.path.join(PROJECT_DIR, "data")
+if not os.path.exists(DATA_DIR):
+    if os.path.exists(os.path.join(os.getcwd(), "data")):
+        DATA_DIR = os.path.join(os.getcwd(), "data")
+    elif os.path.exists(os.path.join(BASE_DIR, "data")):
+        DATA_DIR = os.path.join(BASE_DIR, "data")
 
 app = Flask(__name__, static_folder=BASE_DIR, static_url_path="")
 CORS(app)
@@ -222,7 +236,10 @@ def get_status():
 
 @app.route("/download-notebook", methods=["GET"])
 def download_notebook():
-    return send_from_directory(PROJECT_DIR, "student_performance_prediction.ipynb", as_attachment=True)
+    for d in [PROJECT_DIR, os.getcwd(), BASE_DIR]:
+        if os.path.exists(os.path.join(d, "student_performance_prediction.ipynb")):
+            return send_from_directory(d, "student_performance_prediction.ipynb", as_attachment=True)
+    return jsonify({"error": "Notebook file not found"}), 404
 
 @app.route("/api/metadata", methods=["GET"])
 def get_metadata():

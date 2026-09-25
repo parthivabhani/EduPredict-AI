@@ -159,3 +159,18 @@ jupyter notebook student_performance_prediction.ipynb
 
 8. **Research Hypothesis & Literature Review Tab:**
    * Full documentation of the CA 1 proposal, statistical test tables ($t$-tests, ANOVA, $\chi^2$), and comparison with 20 published benchmark papers.
+
+---
+
+## 9. Vercel Deployment Guide
+
+This project is optimized for deployment on [Vercel](https://vercel.com):
+
+* **Flask Framework Preset (Default - Python REST API + Frontend):**
+  * Entrypoint configured via `pyproject.toml` (`[tool.vercel] entrypoint = "web_app.server:app"`), root `app.py`, and `api/index.py`.
+  * Automatically installs runtime dependencies from `requirements.txt`.
+  * Serves the interactive web interface, embedded notebook preview, and all REST endpoints (`/api/status`, `/api/predict`, `/download-notebook`).
+
+* **Static Preset (Instant Zero-Config Mode):**
+  * In Vercel Project Settings, set **Root Directory** to `web_app` and Framework Preset to **Other**.
+  * The built-in client-side ML engine delivers instant inference directly in the browser with zero server latency.
