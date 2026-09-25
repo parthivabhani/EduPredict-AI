@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/web_app/index.html"
+    },
+    {
+      "source": "/download-notebook",
+      "destination": "/student_performance_prediction.ipynb"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/web_app/$1"
+    }
+  ]
+}

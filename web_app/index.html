@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduPredict AI - Student Performance Prediction & Academic Risk Intelligence Platform. Semester 7 Data Science Mini Project by Parthiv Abhani.">
+  <title>EduPredict AI | Student Performance Prediction & Early Warning System</title>
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js for Interactive Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Top Header -->
+    <header class="app-header" id="appHeader">
+      <div class="header-container">
+        <div class="brand-group">
+          <div class="brand-icon" title="EduPredict AI">
+            <img src="assets/logo-icon.png" alt="Edu Logo" class="brand-logo-img">
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">EduPredict <span class="gradient-text">AI</span></div>
+            <div class="brand-subtitle">Student Performance Intelligence • Data Science (Sem 7) • Guide: Dr. Smita Singh</div>
+          </div>
+        </div>
+
+        <div class="student-badge" title="Author & Faculty Guide Information">
+          <span class="badge-dot"></span>
+          <div class="student-info-col">
+            <div class="student-name">Parthiv Abhani <span class="student-id">PRN: 23070521106</span></div>
+            <div class="student-guide">Subject: <strong>Data Science</strong> | Guide: <strong>Dr. Smita Singh</strong></div>
+          </div>
+        </div>
+
+        <div class="header-controls">
+          <div class="api-status-badge" id="apiStatusBadge">
+            <span class="status-indicator"></span>
+            <span class="status-label" id="statusLabel">
+              <span class="status-full">Connecting...</span>
+              <span class="status-mobile">Connecting</span>
+            </span>
+          </div>
+
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Light / Dark Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="app-nav" aria-label="Main Navigation">
+        <div class="nav-container">
+          <button class="nav-tab active" data-tab="simulatorTab" id="navSimulator">
+            <span class="tab-icon">🎯</span>
+            <span class="tab-text"><span class="tab-label-short">Predictor</span><span class="tab-label-full">Live Predictor & Risk Assessment</span></span>
+          </button>
+          <button class="nav-tab" data-tab="notebookTab" id="navNotebook">
+            <span class="tab-icon">📓</span>
+            <span class="tab-text"><span class="tab-label-short">Notebook</span><span class="tab-label-full">Jupyter Notebook (.ipynb)</span></span>
+          </button>
+          <button class="nav-tab" data-tab="benchmarksTab" id="navBenchmarks">
+            <span class="tab-icon">📊</span>
+            <span class="tab-text"><span class="tab-label-short">Benchmarks</span><span class="tab-label-full">Model Benchmarks & Metrics</span></span>
+          </button>
+          <button class="nav-tab" data-tab="edaTab" id="navEda">
+            <span class="tab-icon">📈</span>
+            <span class="tab-text"><span class="tab-label-short">EDA Charts</span><span class="tab-label-full">Exploratory Data Analytics (EDA)</span></span>
+          </button>
+          <button class="nav-tab" data-tab="batchTab" id="navBatch">
+            <span class="tab-icon">📁</span>
+            <span class="tab-text"><span class="tab-label-short">Records</span><span class="tab-label-full">Batch CSV Predictor & Records</span></span>
+          </button>
+          <button class="nav-tab" data-tab="researchTab" id="navResearch">
+            <span class="tab-icon">📑</span>
+            <span class="tab-text"><span class="tab-label-short">Research</span><span class="tab-label-full">Research Hypothesis & Methodology</span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main App Content -->
+    <main class="app-main">
+      <!-- ==================== TAB 1: LIVE SIMULATOR ==================== -->
+      <section class="tab-content active" id="simulatorTab">
+        <!-- Banner Showcase -->
+        <div class="hero-banner-card">
+          <div class="banner-content">
+            <div class="banner-tag">Machine Learning Decision Support System</div>
+            <h1 class="banner-title">Predict Student Performance & Mitigate Academic Risk</h1>
+            <p class="banner-desc">
+              Grounded in the UCI Student Performance Benchmark (Cortez & Silva, 2008), this dual-horizon AI system evaluates demographic, behavioral, and academic traits to forecast summative exam grades and deliver actionable early warnings.
+            </p>
+            <div class="persona-quickbar">
+              <span class="quickbar-label">Test Persona Presets:</span>
+              <button class="preset-btn" id="presetHighAchiever" title="Load high achiever student profile">
+                🌟 Elena (High Achiever)
+              </button>
+              <button class="preset-btn" id="presetAverage" title="Load average student profile">
+                📘 Sofia (Average Resilient)
+              </button>
+              <button class="preset-btn danger" id="presetAtRisk" title="Load at-risk student profile">
+                ⚠️ Lucas (At-Risk Warning)
+              </button>
+              <button class="preset-btn reset" id="presetReset" title="Reset all inputs to defaults">
+                🔄 Reset Defaults
+              </button>
+            </div>
+          </div>
+          <div class="banner-media">
+            <img src="assets/banner.jpg" alt="EduPredict AI Analytics Graphic" class="banner-img" onerror="this.style.display='none'">
+          </div>
+        </div>
+
+        <!-- Mode Toggle Bar -->
+        <div class="mode-selector-bar">
+          <div class="mode-info">
+            <span class="mode-label">Prediction Horizon:</span>
+            <span class="mode-desc" id="modeDescription">Evaluating full feature set including Period 1 (G1) and Period 2 (G2) grades.</span>
+          </div>
+          <div class="mode-switch-group">
+            <button class="mode-btn" id="modeEarlyBtn" data-mode="early">
+              <span class="mode-btn-icon">⏱️</span>
+              <span class="mode-btn-text">Early Warning Mode <small>(Pre-Exam: No Grades)</small></span>
+            </button>
+            <button class="mode-btn active" id="modeMidtermBtn" data-mode="midterm">
+              <span class="mode-btn-icon">📋</span>
+              <span class="mode-btn-text">Mid-Term Mode <small>(With G1 & G2 Grades)</small></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulator Grid -->
+        <div class="simulator-grid">
+          <!-- Input Controls (Left Column) -->
+          <div class="controls-column">
+            <!-- Card 1: Academic & Study Dynamics -->
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <span class="card-icon">📚</span>
+                  <h3 class="card-title">Academic & Study Behaviors</h3>
+                </div>
+                <span class="card-badge primary">Primary Determinants</span>
+              </div>
+              <div class="card-body">
+                <!-- Midterm Period Grades Section (Conditional) -->
+                <div class="grade-inputs-section" id="midtermGradesContainer">
+                  <div class="section-notice">
+                    <span class="notice-icon">ℹ️</span>
+                    <span>Periodic evaluation grades available for mid-term forecasting:</span>
+                  </div>
+                  <div class="form-row-2">
+                    <div class="form-group">
+                      <div class="label-with-value">
+                        <label for="inputG1">Period 1 Grade (G1)</label>
+                        <span class="input-val-badge" id="valG1">12 / 20</span>
+                      </div>
+                      <input type="range" class="form-range" id="inputG1" min="0" max="20" step="1" value="12">
+                      <div class="range-limits"><span>0 (Min)</span><span>10 (Pass)</span><span>20 (Max)</span></div>
+                    </div>
+                    <div class="form-group">
+                      <div class="label-with-value">
+                        <label for="inputG2">Period 2 Grade (G2)</label>
+                        <span class="input-val-badge" id="valG2">13 / 20</span>
+                      </div>
+                      <input type="range" class="form-range" id="inputG2" min="0" max="20" step="1" value="13">
+                      <div class="range-limits"><span>0 (Min)</span><span>10 (Pass)</span><span>20 (Max)</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Study Time -->
+                <div class="form-group">
+                  <div class="label-with-value">
+                    <label for="inputStudytime">Weekly Study Time</label>
+                    <span class="input-val-badge" id="valStudytime">2 - 5 hrs/week</span>
+                  </div>
+                  <input type="range" class="form-range" id="inputStudytime" min="1" max="4" step="1" value="2">
+                  <div class="range-ticks">
+                    <span>&lt; 2 hrs</span>
+                    <span>2 - 5 hrs</span>
+                    <span>5 - 10 hrs</span>
+                    <span>&gt; 10 hrs</span>
+                  </div>
+                </div>
+
+                <!-- Past Failures -->
+                <div class="form-group">
+                  <div class="label-with-value">
+                    <label>Past Course Failures (Historical Risk Indicator)</label>
+                    <span class="input-val-badge" id="valFailures">0 Failures</span>
+                  </div>
+                  <div class="pill-selector" id="failuresSelector">
+                    <button type="button" class="pill-btn active" data-val="0">0 (None)</button>
+                    <button type="button" class="pill-btn" data-val="1">1 Failure</button>
+                    <button type="button" class="pill-btn" data-val="2">2 Failures</button>
+                    <button type="button" class="pill-btn danger" data-val="3">3+ Failures</button>
+                  </div>
+                </div>
+
+                <!-- Absences -->
+                <div class="form-group">
+                  <div class="label-with-value">
+                    <label for="inputAbsences">School Absences (Missed Days)</label>
+                    <span class="input-val-badge" id="valAbsences">4 Days</span>
+                  </div>
+                  <input type="range" class="form-range" id="inputAbsences" min="0" max="32" step="1" value="4">
+                  <div class="range-limits"><span>0 Days (Perfect)</span><span>10 (Warning)</span><span>32+ (Severe)</span></div>
+                </div>
+
+                <!-- Academic Intentions & Support -->
+                <div class="toggle-grid">
+                  <label class="custom-switch-label">
+                    <span>Aspiration for Higher Education</span>
+                    <input type="checkbox" id="inputHigher" checked>
+                    <span class="slider-switch"></span>
+                  </label>
+                  <label class="custom-switch-label">
+                    <span>School Remedial Support</span>
+                    <input type="checkbox" id="inputSchoolsup">
+                    <span class="slider-switch"></span>
+                  </label>
+                  <label class="custom-switch-label">
+                    <span>Family Educational Support</span>
+                    <input type="checkbox" id="inputFamsup" checked>
+                    <span class="slider-switch"></span>
+                  </label>
+                  <label class="custom-switch-label">
+                    <span>Extra Paid Tutoring Classes</span>
+                    <input type="checkbox" id="inputPaid">
+                    <span class="slider-switch"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Lifestyle, Social & Wellbeing -->
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <span class="card-icon">🌿</span>
+                  <h3 class="card-title">Lifestyle, Health & Social Balance</h3>
+                </div>
+                <span class="card-badge secondary">Behavioral Factors</span>
+              </div>
+              <div class="card-body">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <div class="label-with-value">
+                      <label for="inputWalc">Weekend Alcohol Intake</label>
+                      <span class="input-val-badge" id="valWalc">1 (Very Low)</span>
+                    </div>
+                    <input type="range" class="form-range" id="inputWalc" min="1" max="5" step="1" value="1">
+                    <div class="range-limits"><span>1 (Minimal)</span><span>3 (Moderate)</span><span>5 (Heavy)</span></div>
+                  </div>
+                  <div class="form-group">
+                    <div class="label-with-value">
+                      <label for="inputDalc">Workday Alcohol Intake</label>
+                      <span class="input-val-badge" id="valDalc">1 (Very Low)</span>
+                    </div>
+                    <input type="range" class="form-range" id="inputDalc" min="1" max="5" step="1" value="1">
+                    <div class="range-limits"><span>1 (Minimal)</span><span>3 (Moderate)</span><span>5 (Heavy)</span></div>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <div class="label-with-value">
+                      <label for="inputGoout">Social Outings with Friends</label>
+                      <span class="input-val-badge" id="valGoout">3 (Balanced)</span>
+                    </div>
+                    <input type="range" class="form-range" id="inputGoout" min="1" max="5" step="1" value="3">
+                  </div>
+                  <div class="form-group">
+                    <div class="label-with-value">
+                      <label for="inputFreetime">Free Time After School</label>
+                      <span class="input-val-badge" id="valFreetime">3 (Moderate)</span>
+                    </div>
+                    <input type="range" class="form-range" id="inputFreetime" min="1" max="5" step="1" value="3">
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <div class="label-with-value">
+                      <label for="inputHealth">Current Health Status</label>
+                      <span class="input-val-badge" id="valHealth">4 (Good)</span>
+                    </div>
+                    <input type="range" class="form-range" id="inputHealth" min="1" max="5" step="1" value="4">
+                  </div>
+                  <div class="form-group">
+                    <div class="label-with-value">
+                      <label for="inputFamrel">Family Relationship Quality</label>
+                      <span class="input-val-badge" id="valFamrel">4 (Harmonious)</span>
+                    </div>
+                    <input type="range" class="form-range" id="inputFamrel" min="1" max="5" step="1" value="4">
+                  </div>
+                </div>
+
+                <div class="toggle-grid">
+                  <label class="custom-switch-label">
+                    <span>Home Internet Access</span>
+                    <input type="checkbox" id="inputInternet" checked>
+                    <span class="slider-switch"></span>
+                  </label>
+                  <label class="custom-switch-label">
+                    <span>In Romantic Relationship</span>
+                    <input type="checkbox" id="inputRomantic">
+                    <span class="slider-switch"></span>
+                  </label>
+                  <label class="custom-switch-label">
+                    <span>Extracurricular Activities</span>
+                    <input type="checkbox" id="inputActivities" checked>
+                    <span class="slider-switch"></span>
+                  </label>
+                  <label class="custom-switch-label">
+                    <span>Attended Nursery Pre-School</span>
+                    <input type="checkbox" id="inputNursery" checked>
+                    <span class="slider-switch"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Demographic & Family Background -->
+            <div class="glass-card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <span class="card-icon">🏠</span>
+                  <h3 class="card-title">Demographic & Parental Background</h3>
+                </div>
+                <span class="card-badge neutral">Contextual Attributes</span>
+              </div>
+              <div class="card-body">
+                <div class="form-row-3">
+                  <div class="form-group">
+                    <label for="inputAge">Age (Years)</label>
+                    <select class="form-select" id="inputAge">
+                      <option value="15">15 years</option>
+                      <option value="16">16 years</option>
+                      <option value="17" selected>17 years</option>
+                      <option value="18">18 years</option>
+                      <option value="19">19 years</option>
+                      <option value="20">20+ years</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSex">Student Gender</label>
+                    <select class="form-select" id="inputSex">
+                      <option value="F" selected>Female</option>
+                      <option value="M">Male</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputAddress">Home Location</label>
+                    <select class="form-select" id="inputAddress">
+                      <option value="U" selected>Urban</option>
+                      <option value="R">Rural</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="inputMedu">Mother's Education Level</label>
+                    <select class="form-select" id="inputMedu">
+                      <option value="0">None</option>
+                      <option value="1">Primary Education (4th Grade)</option>
+                      <option value="2" selected>5th to 9th Grade</option>
+                      <option value="3">Secondary Education</option>
+                      <option value="4">Higher Education (University)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputFedu">Father's Education Level</label>
+                    <select class="form-select" id="inputFedu">
+                      <option value="0">None</option>
+                      <option value="1">Primary Education (4th Grade)</option>
+                      <option value="2" selected>5th to 9th Grade</option>
+                      <option value="3">Secondary Education</option>
+                      <option value="4">Higher Education (University)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="inputMjob">Mother's Occupation</label>
+                    <select class="form-select" id="inputMjob">
+                      <option value="teacher">Teacher / Education</option>
+                      <option value="health">Healthcare / Medical</option>
+                      <option value="services" selected>Civil Services / Admin</option>
+                      <option value="at_home">At Home / Homemaker</option>
+                      <option value="other">Other / Private Sector</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputFjob">Father's Occupation</label>
+                    <select class="form-select" id="inputFjob">
+                      <option value="teacher">Teacher / Education</option>
+                      <option value="health">Healthcare / Medical</option>
+                      <option value="services" selected>Civil Services / Admin</option>
+                      <option value="at_home">At Home / Homemaker</option>
+                      <option value="other">Other / Private Sector</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row-3">
+                  <div class="form-group">
+                    <label for="inputSchool">School Attended</label>
+                    <select class="form-select" id="inputSchool">
+                      <option value="GP" selected>Gabriel Pereira (GP)</option>
+                      <option value="MS">Mousinho da Silveira (MS)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputFamsize">Family Size</label>
+                    <select class="form-select" id="inputFamsize">
+                      <option value="GT3" selected>Greater than 3 (>3)</option>
+                      <option value="LE3">Less or equal to 3 (<=3)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputGuardian">Primary Guardian</label>
+                    <select class="form-select" id="inputGuardian">
+                      <option value="mother" selected>Mother</option>
+                      <option value="father">Father</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Real-Time Output & Risk Assessment (Right Column) -->
+          <div class="results-column">
+            <!-- Main Prediction Card -->
+            <div class="glass-card result-showcase-card">
+              <div class="card-header">
+                <div class="card-title-group">
+                  <span class="card-icon">⚡</span>
+                  <h3 class="card-title">Real-Time Academic Forecast</h3>
+                </div>
+                <div class="model-tag" id="activeModelTag">Random Forest Ensemble</div>
+              </div>
+              <div class="card-body">
+                <!-- Big Score Gauge -->
+                <div class="grade-score-display">
+                  <div class="score-radial-wrapper">
+                    <svg class="score-radial" viewBox="0 0 160 160">
+                      <circle class="radial-track" cx="80" cy="80" r="70"></circle>
+                      <circle class="radial-fill" id="radialProgress" cx="80" cy="80" r="70"></circle>
+                    </svg>
+                    <div class="score-inner-content">
+                      <div class="score-number" id="predGradeScore">13.2</div>
+                      <div class="score-scale">out of 20</div>
+                    </div>
+                  </div>
+
+                  <div class="score-meta-panel">
+                    <div class="grade-tier-pill" id="gradeTierPill">
+                      <span class="tier-indicator"></span>
+                      <span class="tier-text" id="gradeTierText">Satisfactory (Bom)</span>
+                    </div>
+
+                    <div class="meta-stat-row">
+                      <div class="meta-stat-box">
+                        <span class="meta-stat-label">Percentage Equivalent</span>
+                        <span class="meta-stat-val" id="predGradePercent">66.0%</span>
+                      </div>
+                      <div class="meta-stat-box">
+                        <span class="meta-stat-label">Pass Probability</span>
+                        <span class="meta-stat-val success" id="predPassProb">88.5%</span>
+                      </div>
+                    </div>
+
+                    <div class="risk-status-banner risk-safe" id="riskStatusBanner">
+                      <span class="risk-badge-icon">🛡️</span>
+                      <div class="risk-badge-text">
+                        <div class="risk-level-heading" id="riskLevelHeading">LOW RISK (SAFE)</div>
+                        <div class="risk-level-sub" id="riskLevelSub">Academic trajectory is sound; continue positive study habits.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Academic Pillar Breakdown -->
+                <div class="academic-pillars-section">
+                  <h4 class="pillars-title">Predictive Pillar Factor Index</h4>
+                  <div class="pillar-bars">
+                    <div class="pillar-item">
+                      <div class="pillar-info">
+                        <span>Study Effort & Focus</span>
+                        <span id="scoreStudy">75%</span>
+                      </div>
+                      <div class="pillar-bar-track">
+                        <div class="pillar-bar-fill" id="barStudy" style="width: 75%;"></div>
+                      </div>
+                    </div>
+                    <div class="pillar-item">
+                      <div class="pillar-info">
+                        <span>Historical Course Competence</span>
+                        <span id="scoreHistory">100%</span>
+                      </div>
+                      <div class="pillar-bar-track">
+                        <div class="pillar-bar-fill" id="barHistory" style="width: 100%;"></div>
+                      </div>
+                    </div>
+                    <div class="pillar-item">
+                      <div class="pillar-info">
+                        <span>Attendance Stability</span>
+                        <span id="scoreAttendance">88%</span>
+                      </div>
+                      <div class="pillar-bar-track">
+                        <div class="pillar-bar-fill" id="barAttendance" style="width: 88%;"></div>
+                      </div>
+                    </div>
+                    <div class="pillar-item">
+                      <div class="pillar-info">
+                        <span>Socio-Familial Capital</span>
+                        <span id="scoreFamily">80%</span>
+                      </div>
+                      <div class="pillar-bar-track">
+                        <div class="pillar-bar-fill" id="barFamily" style="width: 80%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Diagnostic Drivers & Risk Tags -->
+                <div class="diagnostic-factors-grid">
+                  <div class="factor-column risks-col">
+                    <h5 class="factor-heading risk-heading">
+                      <span>⚠️</span> Identified Academic Risk Factors
+                    </h5>
+                    <ul class="factors-list" id="riskFactorsList">
+                      <li>No significant acute risks identified.</li>
+                    </ul>
+                  </div>
+
+                  <div class="factor-column strengths-col">
+                    <h5 class="factor-heading strength-heading">
+                      <span>✨</span> Key Strengths & Protective Factors
+                    </h5>
+                    <ul class="factors-list" id="strengthFactorsList">
+                      <li>Strong desire for higher education.</li>
+                      <li>Clean academic record with zero past course failures.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Strategic Pedagogical Recommendations -->
+                <div class="recommendations-box">
+                  <div class="recs-header">
+                    <span class="recs-icon">💡</span>
+                    <h5 class="recs-title">Actionable Pedagogical Intervention Plan</h5>
+                  </div>
+                  <ul class="recs-list" id="recommendationsList">
+                    <li>Maintain structured study regimen and review intermediate topic assessments.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB: JUPYTER NOTEBOOK FULL PREVIEW ==================== -->
+      <section class="tab-content" id="notebookTab">
+        <div class="tab-header-card notebook-header-flex">
+          <div class="notebook-header-info">
+            <div class="notebook-tag-row">
+              <span class="banner-tag">Complete Executed Artifact</span>
+              <span class="notebook-meta-pill">Python 3.13 Kernel</span>
+              <span class="notebook-meta-pill">26 Sections Executed</span>
+            </div>
+            <h2>Jupyter Notebook Proposed Solution</h2>
+            <p>
+              Full interactive preview of <code>student_performance_prediction.ipynb</code>: containing complete data ingestion, exploratory charts, formal hypothesis tests, dual-horizon model benchmarks, cross-validation, and production model serialization.
+            </p>
+            <div class="notebook-meta-chips">
+              <span class="meta-chip"><strong>Subject:</strong> Data Science (Sem 7)</span>
+              <span class="meta-chip"><strong>Guide:</strong> Dr. Smita Singh</span>
+              <span class="meta-chip"><strong>Student:</strong> Parthiv Abhani (23070521106)</span>
+              <span class="meta-chip"><strong>Status:</strong> Pre-Rendered with all Outputs</span>
+            </div>
+          </div>
+          <div class="notebook-actions">
+            <a href="/download-notebook" download="student_performance_prediction.ipynb" class="action-btn primary" id="btnDownloadNotebook" title="Download the original .ipynb file">
+              <span>📥</span> Download .ipynb
+            </a>
+            <a href="notebook_preview.html" target="_blank" rel="noopener noreferrer" class="action-btn secondary" id="btnOpenTabNotebook" title="Open complete notebook preview in a new browser tab">
+              <span>↗️</span> Open in New Tab
+            </a>
+            <button type="button" class="action-btn secondary" id="btnReloadNotebook" title="Reload notebook view">
+              <span>🔄</span> Refresh
+            </button>
+            <button type="button" class="action-btn secondary" id="btnExpandNotebook" title="Toggle Fullscreen View">
+              <span>⛶</span> Full Screen
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card notebook-viewer-wrapper">
+          <div class="notebook-viewer-toolbar">
+            <div class="viewer-tab-tag">
+              <span class="badge-dot"></span>
+              <span class="viewer-filename">student_performance_prediction.ipynb (Full Execution Output)</span>
+            </div>
+            <div class="viewer-actions-hint">
+              <span>Scroll within the viewer below to inspect every code cell, execution log, and embedded chart</span>
+            </div>
+          </div>
+          <div class="notebook-iframe-container" id="notebookContainer">
+            <button type="button" class="fullscreen-exit-btn" id="btnExitFullscreenFloating" title="Exit Fullscreen (Esc)">
+              <span>✕</span> Exit Fullscreen (Esc)
+            </button>
+            <iframe src="notebook_preview.html" id="notebookIframe" class="notebook-iframe" title="Full Jupyter Notebook Solution Preview"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: MODEL BENCHMARKS ==================== -->
+      <section class="tab-content" id="benchmarksTab">
+        <div class="tab-header-card">
+          <h2>Machine Learning Benchmark Matrix & Performance Evaluation</h2>
+          <p>
+            Comparative empirical evaluation across 7 classification algorithms and 6 regression algorithms under both the Early Warning (Pre-Exam) and Mid-Term (With G1 & G2) experimental settings on the UCI Portuguese Secondary Education cohort ($N=649$).
+          </p>
+        </div>
+
+        <div class="benchmarks-controls">
+          <div class="benchmark-pills" id="benchmarkSettingToggle">
+            <button class="pill-btn active" data-setting="midterm">Mid-Term Setting (With G1 & G2)</button>
+            <button class="pill-btn" data-setting="early">Early Warning Setting (Pre-Exam - No Grades)</button>
+          </div>
+          <div class="benchmark-stat-badge">
+            Evaluated via 5-Fold Stratified Cross-Validation
+          </div>
+        </div>
+
+        <!-- Benchmark Charts -->
+        <div class="charts-grid-2">
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Classification Accuracy & F1-Score Comparison</h3>
+              <span class="card-badge primary">Pass vs Fail Task</span>
+            </div>
+            <div class="card-body chart-wrapper">
+              <canvas id="chartClassificationBenchmark"></canvas>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Regression $R^2$ Score & Error Metrics</h3>
+              <span class="card-badge secondary">Continuous G3 Grade (0-20)</span>
+            </div>
+            <div class="card-body chart-wrapper">
+              <canvas id="chartRegressionBenchmark"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparative Tables -->
+        <div class="glass-card table-card">
+          <div class="card-header">
+            <h3 class="card-title">Comprehensive Model Performance Summary</h3>
+            <span class="card-badge neutral">Test Set Evaluation</span>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="benchmark-table" id="classificationBenchmarkTable">
+                <thead>
+                  <tr>
+                    <th>Model Family</th>
+                    <th>Accuracy</th>
+                    <th>5-Fold CV Accuracy</th>
+                    <th>Precision</th>
+                    <th>Recall (Sensitivity)</th>
+                    <th>F1-Score</th>
+                    <th>ROC-AUC</th>
+                    <th>Operational Recommendation</th>
+                  </tr>
+                </thead>
+                <tbody id="benchmarkTableBody">
+                  <!-- Populated dynamically via app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hyperparameter & Tuning Card -->
+        <div class="glass-card">
+          <div class="card-header">
+            <h3 class="card-title">Hyperparameter Optimization & Cross-Validation Insights</h3>
+            <span class="card-badge primary">GridSearchCV</span>
+          </div>
+          <div class="card-body">
+            <div class="tuning-grid">
+              <div class="tuning-card">
+                <h4>Random Forest Classifier (Tuned)</h4>
+                <ul>
+                  <li><strong>Optimal Estimators:</strong> <code>n_estimators=150</code></li>
+                  <li><strong>Tree Depth:</strong> <code>max_depth=8</code></li>
+                  <li><strong>Split Criterion:</strong> <code>gini</code></li>
+                  <li><strong>Class Weighting:</strong> <code>balanced</code> (mitigates 84:16 class imbalance)</li>
+                  <li><strong>Outcome:</strong> Achieved <strong>93.7% F1-Score</strong> with 94.5% Recall on at-risk class.</li>
+                </ul>
+              </div>
+              <div class="tuning-card">
+                <h4>XGBoost Classifier (Tuned)</h4>
+                <ul>
+                  <li><strong>Learning Rate:</strong> <code>learning_rate=0.08</code></li>
+                  <li><strong>Max Depth:</strong> <code>max_depth=4</code> (prevents overfitting)</li>
+                  <li><strong>Objective:</strong> <code>binary:logistic</code></li>
+                  <li><strong>Subsample:</strong> <code>0.85</code></li>
+                  <li><strong>Outcome:</strong> Achieved top overall <strong>ROC-AUC of 0.9605</strong> and <strong>91.54% Accuracy</strong>.</li>
+                </ul>
+              </div>
+              <div class="tuning-card">
+                <h4>Key Modeling Takeaway</h4>
+                <p>
+                  Ensemble tree models (Random Forest and XGBoost) consistently outperform linear baselines by capturing complex non-linear interactions between absences, past failures, and parental background.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 3: EXPLORATORY DATA ANALYTICS ==================== -->
+      <section class="tab-content" id="edaTab">
+        <div class="tab-header-card">
+          <h2>Exploratory Data Analytics & Empirical Trends</h2>
+          <p>
+            Interactive visual exploration of the primary Portuguese language student cohort ($N=649$), revealing relationships between habits, parental capital, absences, and academic outcomes.
+          </p>
+        </div>
+
+        <div class="charts-grid-2">
+          <!-- Chart 1: Grade Distributions -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Distribution of Academic Evaluation Grades (G1, G2, G3)</h3>
+              <span class="card-badge primary">N = 649 Students</span>
+            </div>
+            <div class="card-body chart-wrapper">
+              <canvas id="chartGradeDist"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Study Time vs Final Grade -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Weekly Study Time vs. Mean Final Grade (G3)</h3>
+              <span class="card-badge secondary">Statistical Significance: p &lt; 0.001</span>
+            </div>
+            <div class="card-body chart-wrapper">
+              <canvas id="chartStudyImpact"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 3: Past Failures Impact -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Impact of Past Course Failures on Pass Rate & Final Grade</h3>
+              <span class="card-badge danger">Primary Risk Signal</span>
+            </div>
+            <div class="card-body chart-wrapper">
+              <canvas id="chartFailuresImpact"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 4: Alcohol Consumption vs Grades -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Weekend Alcohol Consumption vs. Average Final Performance</h3>
+              <span class="card-badge neutral">Behavioral Metric</span>
+            </div>
+            <div class="card-body chart-wrapper">
+              <canvas id="chartAlcoholImpact"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 4: BATCH PREDICTOR ==================== -->
+      <section class="tab-content" id="batchTab">
+        <div class="tab-header-card">
+          <h2>Batch CSV Inference Engine & Institutional Student Records</h2>
+          <p>
+            Upload student records in CSV format or examine institutional sample cohorts from the UCI repository. The system executes automated inference across every record, flagging at-risk individuals.
+          </p>
+        </div>
+
+        <!-- Upload & Action Bar -->
+        <div class="batch-action-bar">
+          <div class="file-dropzone" id="fileDropzone">
+            <div class="dropzone-icon">📥</div>
+            <div class="dropzone-text">
+              <strong>Drag & Drop Student CSV File</strong> or <label for="csvFileInput" class="file-browse-link">browse from computer</label>
+              <div class="dropzone-sub">Accepts semicolon (;) or comma (,) separated files matching UCI format.</div>
+            </div>
+            <input type="file" id="csvFileInput" accept=".csv" class="hidden-file-input">
+          </div>
+
+          <div class="batch-controls">
+            <button class="action-btn primary" id="btnLoadSampleRecords">
+              <span>📋</span> Load UCI Benchmark Sample (40 Students)
+            </button>
+            <button class="action-btn secondary" id="btnExportScoredCSV">
+              <span>💾</span> Export Scored Predictions CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- Batch Results Table -->
+        <div class="glass-card table-card">
+          <div class="card-header">
+            <div class="table-header-left">
+              <h3 class="card-title">Student Records & Inference Ledger</h3>
+              <span class="records-counter" id="recordsCounter">Showing 0 records</span>
+            </div>
+            <div class="table-filters">
+              <input type="text" class="table-search-input" id="tableSearchInput" placeholder="Filter by school, sex, risk level...">
+              <select class="form-select filter-select" id="riskFilterSelect">
+                <option value="all">All Risk Levels</option>
+                <option value="Critical Risk">Critical Risk Only</option>
+                <option value="Moderate Risk">Moderate Risk Only</option>
+                <option value="Low Risk (Safe)">Safe / Low Risk Only</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="benchmark-table student-records-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>School</th>
+                    <th>Sex / Age</th>
+                    <th>Study Time</th>
+                    <th>Failures</th>
+                    <th>Absences</th>
+                    <th>G1 / G2</th>
+                    <th>Actual G3</th>
+                    <th>Predicted G3</th>
+                    <th>Pass Probability</th>
+                    <th>Risk Status</th>
+                  </tr>
+                </thead>
+                <tbody id="studentRecordsTableBody">
+                  <tr>
+                    <td colspan="11" class="text-center empty-state-row">
+                      Click "Load UCI Benchmark Sample" or upload a CSV file to evaluate student records.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 5: RESEARCH & HYPOTHESIS ==================== -->
+      <section class="tab-content" id="researchTab">
+        <div class="tab-header-card">
+          <h2>Research Hypothesis, Theoretical Foundations & Literature Review</h2>
+          <p>
+            Detailed documentation of the research hypothesis formulated in Continuous Assessment 1 (CA 1), statistical validation methodology, and alignment with foundational Educational Data Mining literature.
+          </p>
+        </div>
+
+        <div class="research-grid">
+          <!-- Hypothesis Card -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Research Hypotheses & Statistical Confirmation</h3>
+              <span class="card-badge primary">Empirically Validated</span>
+            </div>
+            <div class="card-body research-text-body">
+              <div class="hypothesis-callout">
+                <h4>Alternative Hypothesis ($H_1$) [Accepted]:</h4>
+                <p>
+                  <em>"Students' demographic, academic, and behavioral attributes have a statistically significant relationship with their final academic performance ($G3$). Machine learning algorithms can accurately predict student performance and assist educational institutions in identifying students who require academic support."</em>
+                </p>
+              </div>
+
+              <div class="hypothesis-callout null">
+                <h4>Null Hypothesis ($H_0$) [Rejected]:</h4>
+                <p>
+                  <em>"Students' demographic, academic, and behavioral attributes have no statistically significant relationship with their final academic performance, and machine learning models cannot reliably predict outcomes."</em>
+                </p>
+              </div>
+
+              <h4 class="mt-4">Statistical Hypothesis Testing Results Summary</h4>
+              <div class="table-responsive">
+                <table class="benchmark-table">
+                  <thead>
+                    <tr>
+                      <th>Statistical Test</th>
+                      <th>Attributes Tested</th>
+                      <th>Test Statistic</th>
+                      <th>p-value</th>
+                      <th>Conclusion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Welch's Two-Sample t-test</strong></td>
+                      <td>Desire for Higher Education (<code>higher</code>: yes vs no)</td>
+                      <td><code>t = 6.2714</code></td>
+                      <td><code>p = 8.12e-10</code></td>
+                      <td><span class="badge-success">Reject H0 (p &lt; 0.001)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Welch's Two-Sample t-test</strong></td>
+                      <td>Weekly Study Time (&ge; 3 hrs vs &lt; 3 hrs)</td>
+                      <td><code>t = 5.1839</code></td>
+                      <td><code>p = 2.91e-07</code></td>
+                      <td><span class="badge-success">Reject H0 (p &lt; 0.001)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>One-Way ANOVA</strong></td>
+                      <td>Mother's Education (<code>Medu</code> tiers 0 to 4)</td>
+                      <td><code>F = 10.7643</code></td>
+                      <td><code>p = 1.89e-08</code></td>
+                      <td><span class="badge-success">Reject H0 (p &lt; 0.001)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>One-Way ANOVA</strong></td>
+                      <td>Number of Past Class Failures (<code>failures</code>)</td>
+                      <td><code>F = 48.3512</code></td>
+                      <td><code>p = 1.44e-28</code></td>
+                      <td><span class="badge-success">Reject H0 (p &lt; 0.001)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Chi-Square ($\chi^2$) Test</strong></td>
+                      <td>Internet Access at Home vs Pass/Fail</td>
+                      <td><code>&chi;&sup2; = 11.238</code> (df=1)</td>
+                      <td><code>p = 0.0008</code></td>
+                      <td><span class="badge-success">Reject H0 (p &lt; 0.01)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Chi-Square ($\chi^2$) Test</strong></td>
+                      <td>Past Failures vs Pass/Fail Outcome</td>
+                      <td><code>&chi;&sup2; = 72.841</code> (df=3)</td>
+                      <td><code>p = 1.04e-15</code></td>
+                      <td><span class="badge-success">Reject H0 (p &lt; 0.001)</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Literature Review Card -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">Related Work & Literature Review Matrix (From CA 1)</h3>
+              <span class="card-badge secondary">20 Benchmark Studies</span>
+            </div>
+            <div class="card-body">
+              <p class="mb-3 text-muted">
+                Synthesized literature review benchmarking our proposed solution against landmark Educational Data Mining publications:
+              </p>
+              <div class="table-responsive">
+                <table class="benchmark-table small-text">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Study Citation</th>
+                      <th>Dataset & Sample</th>
+                      <th>Key Algorithms</th>
+                      <th>Major Findings & Relevance to Our Study</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Cortez & Silva (2008)</strong><br><small>Using Data Mining to Predict Secondary School Student Performance</small></td>
+                      <td>UCI Student Performance Dataset (N=649)</td>
+                      <td>DT, RF, SVM, Neural Nets</td>
+                      <td>Established the benchmark dataset used in our study; proved that early prediction without grades is viable.</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Costa et al. (2017)</strong><br><small>Predicting Student Academic Performance Using ML</small></td>
+                      <td>UCI Portuguese Dataset (N=649)</td>
+                      <td>DT, RF, Naive Bayes, SVM</td>
+                      <td>Demonstrated that historical academic failure and study commitment are strong early warning signals.</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Hasan et al. (2023)</strong><br><small>Student Performance Prediction Using Ensemble ML</small></td>
+                      <td>Public Educational Datasets</td>
+                      <td>Random Forest, XGBoost, AdaBoost</td>
+                      <td>Showed that ensemble methods (RF & XGBoost) systematically outperform single decision trees and linear models.</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><strong>Sekeroglu et al. (2019)</strong><br><small>Student Performance Prediction and Classification</small></td>
+                      <td>UCI Student Dataset</td>
+                      <td>RF, DT, SVM, KNN, ANN</td>
+                      <td>Demonstrated superiority of Random Forest in generalizability while retaining tree interpretability.</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><strong>Altabrawee et al. (2023)</strong><br><small>Student Performance Prediction Using Machine Learning</small></td>
+                      <td>Institutional Academic Records</td>
+                      <td>Random Forest, Decision Tree, XGBoost</td>
+                      <td>Emphasized feature engineering and importance of automated early intervention counseling workflows.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <strong>EduPredict AI</strong> : Continuous Assessment 3 (CA 3) Mini Project Implementation | Subject: <strong>Data Science</strong>
+        </div>
+        <div class="footer-right">
+          Author: <strong>Parthiv Abhani</strong> (PRN: 23070521106) • Under the Guidance of <strong>Dr. Smita Singh</strong>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

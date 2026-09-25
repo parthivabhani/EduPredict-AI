@@ -1,0 +1,307 @@
+{
+  "project_title": "Student Performance Prediction Using Data Science and Machine Learning",
+  "student_name": "Parthiv Abhani",
+  "student_prn": "23070521106",
+  "subject": "Data Science",
+  "faculty_guide": "Dr. Smita Singh",
+  "dataset": "UCI Student Performance Dataset (Cortez & Silva, 2008)",
+  "total_samples": 649,
+  "features_count": 43,
+  "best_classification_model": "Random Forest Classifier",
+  "best_regression_model": "Random Forest Regressor",
+  "classification_benchmark": [
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Logistic Regression",
+      "Accuracy": 0.7923076923076923,
+      "CV Accuracy (Mean)": 0.855470500373413,
+      "CV Std": 0.02519523763638283,
+      "Precision": 0.8672566371681416,
+      "Recall": 0.8909090909090909,
+      "F1-Score": 0.8789237668161435,
+      "ROC-AUC": 0.6186363636363637
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Decision Tree",
+      "Accuracy": 0.7538461538461538,
+      "CV Accuracy (Mean)": 0.8535287528005974,
+      "CV Std": 0.013195144048295386,
+      "Precision": 0.8482142857142857,
+      "Recall": 0.8636363636363636,
+      "F1-Score": 0.8558558558558559,
+      "ROC-AUC": 0.575
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Random Forest",
+      "Accuracy": 0.8153846153846154,
+      "CV Accuracy (Mean)": 0.8632188200149364,
+      "CV Std": 0.02040176676642969,
+      "Precision": 0.8524590163934426,
+      "Recall": 0.9454545454545454,
+      "F1-Score": 0.896551724137931,
+      "ROC-AUC": 0.6663636363636363
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Support Vector Machine",
+      "Accuracy": 0.8153846153846154,
+      "CV Accuracy (Mean)": 0.8516616878267363,
+      "CV Std": 0.016562034508130624,
+      "Precision": 0.8524590163934426,
+      "Recall": 0.9454545454545454,
+      "F1-Score": 0.896551724137931,
+      "ROC-AUC": 0.6872727272727274
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "k-Nearest Neighbors",
+      "Accuracy": 0.8153846153846154,
+      "CV Accuracy (Mean)": 0.8497386109036593,
+      "CV Std": 0.020523757902809033,
+      "Precision": 0.8467741935483871,
+      "Recall": 0.9545454545454546,
+      "F1-Score": 0.8974358974358975,
+      "ROC-AUC": 0.5625
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Gaussian Naive Bayes",
+      "Accuracy": 0.6384615384615384,
+      "CV Accuracy (Mean)": 0.60537714712472,
+      "CV Std": 0.21875276477449124,
+      "Precision": 0.8795180722891566,
+      "Recall": 0.6636363636363637,
+      "F1-Score": 0.7564766839378239,
+      "ROC-AUC": 0.5065909090909091
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "XGBoost",
+      "Accuracy": 0.8076923076923077,
+      "CV Accuracy (Mean)": 0.8651045556385363,
+      "CV Std": 0.019378389597700656,
+      "Precision": 0.8695652173913043,
+      "Recall": 0.9090909090909091,
+      "F1-Score": 0.8888888888888888,
+      "ROC-AUC": 0.6504545454545455
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Logistic Regression",
+      "Accuracy": 0.9076923076923077,
+      "CV Accuracy (Mean)": 0.9249066467513071,
+      "CV Std": 0.026692016919423252,
+      "Precision": 0.9375,
+      "Recall": 0.9545454545454546,
+      "F1-Score": 0.9459459459459459,
+      "ROC-AUC": 0.9063636363636364
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Decision Tree",
+      "Accuracy": 0.8846153846153846,
+      "CV Accuracy (Mean)": 0.9017550410754295,
+      "CV Std": 0.029353361123364858,
+      "Precision": 0.9203539823008849,
+      "Recall": 0.9454545454545454,
+      "F1-Score": 0.9327354260089686,
+      "ROC-AUC": 0.8243181818181818
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Random Forest",
+      "Accuracy": 0.8923076923076924,
+      "CV Accuracy (Mean)": 0.9287341299477221,
+      "CV Std": 0.020640451841488786,
+      "Precision": 0.9285714285714286,
+      "Recall": 0.9454545454545454,
+      "F1-Score": 0.9369369369369369,
+      "ROC-AUC": 0.9227272727272727
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Support Vector Machine",
+      "Accuracy": 0.8615384615384616,
+      "CV Accuracy (Mean)": 0.8979088872292756,
+      "CV Std": 0.012847604975476004,
+      "Precision": 0.8898305084745762,
+      "Recall": 0.9545454545454546,
+      "F1-Score": 0.9210526315789473,
+      "ROC-AUC": 0.8731818181818182
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "k-Nearest Neighbors",
+      "Accuracy": 0.8384615384615385,
+      "CV Accuracy (Mean)": 0.8671023151605676,
+      "CV Std": 0.025876308129459822,
+      "Precision": 0.856,
+      "Recall": 0.9727272727272728,
+      "F1-Score": 0.9106382978723404,
+      "ROC-AUC": 0.6638636363636364
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Gaussian Naive Bayes",
+      "Accuracy": 0.7461538461538462,
+      "CV Accuracy (Mean)": 0.7131067961165048,
+      "CV Std": 0.1587466369763545,
+      "Precision": 0.8969072164948454,
+      "Recall": 0.7909090909090909,
+      "F1-Score": 0.8405797101449275,
+      "ROC-AUC": 0.5979545454545455
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "XGBoost",
+      "Accuracy": 0.9153846153846154,
+      "CV Accuracy (Mean)": 0.9267363704256908,
+      "CV Std": 0.021788368263408193,
+      "Precision": 0.9459459459459459,
+      "Recall": 0.9545454545454546,
+      "F1-Score": 0.9502262443438914,
+      "ROC-AUC": 0.9604545454545454
+    }
+  ],
+  "regression_benchmark": [
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Linear Regression",
+      "R\u00b2 Score": 0.16016991964318272,
+      "CV R\u00b2 (Mean)": 0.2256060769873271,
+      "MAE": 2.156382187028527,
+      "MSE": 8.189784412019225,
+      "RMSE": 2.8617799377344206
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Ridge Regression",
+      "R\u00b2 Score": 0.16104172256947447,
+      "CV R\u00b2 (Mean)": 0.2263029419305905,
+      "MAE": 2.1549802713486965,
+      "MSE": 8.181282837494694,
+      "RMSE": 2.860294187228771
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Decision Tree Regressor",
+      "R\u00b2 Score": -0.016556167012815814,
+      "CV R\u00b2 (Mean)": -0.00475360131867073,
+      "MAE": 2.2967263872953363,
+      "MSE": 9.913167014697047,
+      "RMSE": 3.148518225244543
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Random Forest Regressor",
+      "R\u00b2 Score": 0.1568454288400647,
+      "CV R\u00b2 (Mean)": 0.2891350082685194,
+      "MAE": 2.057424891774795,
+      "MSE": 8.222203902097158,
+      "RMSE": 2.8674385611721758
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "Support Vector Regressor",
+      "R\u00b2 Score": 0.1760040237109214,
+      "CV R\u00b2 (Mean)": 0.2717206713716568,
+      "MAE": 2.067961662709521,
+      "MSE": 8.035374726410964,
+      "RMSE": 2.8346736543050177
+    },
+    {
+      "Setting": "Early Warning (No Grades)",
+      "Model": "XGBoost Regressor",
+      "R\u00b2 Score": 0.14482760429382324,
+      "CV R\u00b2 (Mean)": 0.20995842218399047,
+      "MAE": 2.116262197494507,
+      "MSE": 8.339398384094238,
+      "RMSE": 2.8878016524848515
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Linear Regression",
+      "R\u00b2 Score": 0.8486513286537314,
+      "CV R\u00b2 (Mean)": 0.8261385086224168,
+      "MAE": 0.7650597682758261,
+      "MSE": 1.4759092563639324,
+      "RMSE": 1.2148700573987048
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Ridge Regression",
+      "R\u00b2 Score": 0.8486868231896139,
+      "CV R\u00b2 (Mean)": 0.8263002178402846,
+      "MAE": 0.7650211916746698,
+      "MSE": 1.4755631237312938,
+      "RMSE": 1.2147275923972807
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Decision Tree Regressor",
+      "R\u00b2 Score": 0.8150006973688043,
+      "CV R\u00b2 (Mean)": 0.6892154309877163,
+      "MAE": 0.8118538213167594,
+      "MSE": 1.8040606550787914,
+      "RMSE": 1.3431532507792219
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Random Forest Regressor",
+      "R\u00b2 Score": 0.8477779200134146,
+      "CV R\u00b2 (Mean)": 0.8172038630186395,
+      "MAE": 0.7555791544736529,
+      "MSE": 1.4844264893555754,
+      "RMSE": 1.218370423703553
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "Support Vector Regressor",
+      "R\u00b2 Score": 0.6917095606338867,
+      "CV R\u00b2 (Mean)": 0.6748260766700109,
+      "MAE": 1.0858778416617505,
+      "MSE": 3.0063608029167423,
+      "RMSE": 1.7338860409256263
+    },
+    {
+      "Setting": "Mid-Term (With G1 & G2)",
+      "Model": "XGBoost Regressor",
+      "R\u00b2 Score": 0.8238914012908936,
+      "CV R\u00b2 (Mean)": 0.8079749822616578,
+      "MAE": 0.7566947937011719,
+      "MSE": 1.7173614501953125,
+      "RMSE": 1.3104813810944864
+    }
+  ],
+  "top_features_early": {
+    "failures": 0.12205314941834633,
+    "higher_yes": 0.07915404362813712,
+    "school_MS": 0.06620255977499807,
+    "total_alc": 0.05412036469567543,
+    "absences": 0.051077494210917805,
+    "famrel": 0.04653057442341746,
+    "parent_edu_avg": 0.03826549801617821,
+    "age": 0.0358848251977291,
+    "freetime": 0.03522944326989638,
+    "Walc": 0.03364947149657183,
+    "goout": 0.03331210985045847,
+    "Fedu": 0.031279545864926206
+  },
+  "top_features_midterm": {
+    "G2": 0.24529715716416708,
+    "G1": 0.2318134488342316,
+    "failures": 0.06294917489093588,
+    "higher_yes": 0.043966306116139164,
+    "total_alc": 0.029287782679797054,
+    "absences": 0.028689987481232908,
+    "school_MS": 0.026706700328146305,
+    "famrel": 0.02268896247999845,
+    "goout": 0.02066077164722898,
+    "freetime": 0.020532075831785974,
+    "parent_edu_avg": 0.01910250433063404,
+    "Walc": 0.01853389078971627
+  },
+  "pass_threshold": 10
+}
