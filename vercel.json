@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "outputDirectory": "web_app",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/download-notebook",
+      "destination": "/student_performance_prediction.ipynb"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+requirements.txt
+requirements-dev.txt
+generate_and_run_notebook.py
+start_app.sh
+data
+models
